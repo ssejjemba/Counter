@@ -1,25 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+import "./App.css";
+
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      count: 0,
+    };
+  }
+
+  render() {
+    return (
+      <div data-testid="application_container">
+        <h1 data-testid="counter_display">{`The counter is ${this.state.count}`}</h1>
+        <button
+          data-testid="increment_button"
+          onMouseEnter={() => this.setState({ count: this.state.count + 1 })}
         >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+          Increase count
+        </button>
+        <button
+          data-testid="decrement_button"
+          onMouseEnter={() => this.setState({ count: this.state.count - 1 })}
+        >
+          Decrease count
+        </button>
+      </div>
+    );
+  }
 }
 
 export default App;
